@@ -10,6 +10,7 @@ Required Software/Accounts:
 
 
 [Android Studio](https://developer.android.com/studio/gclsrc=aw.ds&gclid=Cj0KCQjwz7uRBhDRARIsAFqjulkJfYWv4vJtFJoLgJHlbJ60zXG9ZmRUgH_ZrhpAC4xaUL2aQzq5tQYaAkvNEALw_wcB#downloads)
+
 [Firebase](https://firebase.google.com/)
 
 Windows:
