@@ -6,11 +6,11 @@ The solution to this is to have an application that will easily record your baby
 
 ## System Requirements/Software
 
-Required Software: 
+Required Software/Accounts: 
 
 
 [Android Studio](https://developer.android.com/studio/gclsrc=aw.ds&gclid=Cj0KCQjwz7uRBhDRARIsAFqjulkJfYWv4vJtFJoLgJHlbJ60zXG9ZmRUgH_ZrhpAC4xaUL2aQzq5tQYaAkvNEALw_wcB#downloads)
-
+[Firebase](https://firebase.google.com/)
 
 Windows:
 
