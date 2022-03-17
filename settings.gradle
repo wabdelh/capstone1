@@ -14,3 +14,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "capstone1"
 include ':app'
+include ':application'
+include ':application2'
+include ':capstone'
