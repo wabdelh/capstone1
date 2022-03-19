@@ -5,19 +5,20 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 
 class RegisterUser : AppCompatActivity(), View.OnClickListener {
-    //private TextView registerUser
-    //private EditText editTextFirst, editTextLast, exitTextEmail, editTextPassword
+
+
 
     private lateinit var registerUser: TextView
+    private lateinit var progressBar: ProgressBar
     private lateinit var editTextFirst: EditText
     private lateinit var editTextLast: EditText
     private lateinit var editTextEmail: EditText
@@ -41,6 +42,8 @@ class RegisterUser : AppCompatActivity(), View.OnClickListener {
         editTextLast = findViewById<EditText>(R.id.lastName)
         editTextEmail = findViewById<EditText>(R.id.emailR)
         editTextPassword = findViewById<EditText>(R.id.passwordR)
+
+        progressBar = findViewById<ProgressBar>(R.id.progressBarR)
 
 
         findViewById<FloatingActionButton>(R.id.backToLogin).setOnClickListener(this)
@@ -104,7 +107,38 @@ class RegisterUser : AppCompatActivity(), View.OnClickListener {
             editTextPassword.setError("Please enter a longer password!")
             editTextPassword.requestFocus()
             return
-
         }
+
+        progressBar.setVisibility(View.VISIBLE)
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task->
+                if (task.isSuccessful){
+                    val userData = User(firstName, lastName, email)
+                    val database = FirebaseDatabase.getInstance().getReference("Users")
+                    val userID = database.push().key
+
+                    if (userID != null) {
+                        database.child(userID).setValue(userData).addOnSuccessListener {
+
+                            Toast.makeText(this, "User has been saved successfully!", Toast.LENGTH_LONG).show()
+                            progressBar.setVisibility(View.GONE)
+
+                            // redirect to Login Layout here
+
+                        }.addOnFailureListener{
+                            Toast.makeText(this@RegisterUser, "Failed to register!", Toast.LENGTH_LONG).show()
+                            progressBar.setVisibility(View.GONE)
+                        }
+                    }
+
+                }else{
+                    Toast.makeText(this@RegisterUser, "This email was used!", Toast.LENGTH_LONG).show()
+                    progressBar.setVisibility(View.GONE)
+                }
+
+            }
+
+
+
     }
 }
