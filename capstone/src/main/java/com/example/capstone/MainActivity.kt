@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         //in this context, it is a TextView objects
         //when this object is clicked, call onClick(v) where v is the object
     }
+
     override fun onClick(v: View) {
         when (v.id) { //when is the kotlin switch statement. use the following syntax
             R.id.register -> { //when v.id == R.id.register, the id of register object
@@ -68,8 +69,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
         }
+
         override fun onClick(v: View) {
-            when (v.id){ //when is the kotlin switch statement. use the following syntax
+            when (v.id) { //when is the kotlin switch statement. use the following syntax
                 R.id.login -> {
                     loginUser()
                 }
@@ -82,13 +84,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             var email: String = editEmail.text.toString().trim()
             var password: String = editPassword.text.toString().trim()
 
-            if(email.isEmpty()){
+            if (email.isEmpty()) {
                 editEmail.setError("Email is required!")
                 editEmail.requestFocus()
                 return
             }
 
-            if(password.isEmpty()){
+            if (password.isEmpty()) {
                 editPassword.setError("Password is required!")
                 editPassword.requestFocus()
                 return
@@ -104,12 +106,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         setContentView(R.layout.activity_after_login_home)
                     } else {
                         // If sign in fails, display a message to the user.
-                        Toast.makeText(baseContext, "Login failed, please confirm credentials.",
-                            Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            baseContext, "Login failed, please confirm credentials.",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
 
         }
     }
-
+    fun signOut() {
+        Firebase.auth.signOut()
+    }
 }
