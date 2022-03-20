@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        println("test")
         findViewById<TextView>(R.id.register).setOnClickListener(this)
         findViewById<TextView>(R.id.login).setOnClickListener(this)
 
@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     val user = auth.currentUser
-                    setContentView(R.layout.activity_after_login_home)
+                    startActivity(Intent(this, AfterLoginHome::class.java))
                 } else {
                     // If sign in fails, display a message to the user.
                     Toast.makeText(
