@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/WIN10USER/Desktop/Capstone/Git/capstone1/capstone/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.151" />
+        <entry key="..\:/Users/WIN10USER/Desktop/Capstone/Git/capstone1/capstone/src/main/res/drawable/ic_launcher_background.xml" value="0.151" />
+        <entry key="..\:/Users/WIN10USER/Desktop/Capstone/Git/capstone1/capstone/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/WIN10USER/Desktop/Capstone/Git/capstone1/capstone/src/main/res/layout/activity_register_user.xml" value="0.1640625" />
         <entry key="..\:/Users/lyonc/AndroidStudioProjects/capstone1/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/lyonc/AndroidStudioProjects/capstone1/app/src/main/res/layout/activity_register_user.xml" value="0.358695652173913" />
         <entry key="..\:/Users/lyonc/StudioProjects/capstone2/application/src/main/res/layout/activity_main.xml" value="0.14722222222222223" />
