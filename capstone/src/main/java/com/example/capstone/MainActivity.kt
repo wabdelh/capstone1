@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     class ULogin : AppCompatActivity(), View.OnClickListener {
 
         private lateinit var progressBar: ProgressBar
-        private lateinit var loginUser: TextView
+        private lateinit var loginUser: Button
         private lateinit var editEmail: EditText
         private lateinit var editPassword: EditText
 
