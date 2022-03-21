@@ -1,12 +1,10 @@
 package com.example.capstone
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
 import android.widget.*
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
@@ -35,12 +33,12 @@ class RegisterUser : AppCompatActivity(), View.OnClickListener {
         registerUser = findViewById<Button>(R.id.register)
         registerUser.setOnClickListener(this)
 
-        editTextFirst = findViewById<EditText>(R.id.firstName)
-        editTextLast = findViewById<EditText>(R.id.lastName)
-        editTextEmail = findViewById<EditText>(R.id.emailR)
-        editTextPassword = findViewById<EditText>(R.id.passwordR)
+        editTextFirst = findViewById(R.id.firstName)
+        editTextLast = findViewById(R.id.lastName)
+        editTextEmail = findViewById(R.id.emailR)
+        editTextPassword = findViewById(R.id.passwordR)
 
-        progressBar = findViewById<ProgressBar>(R.id.progressBarR)
+        progressBar = findViewById(R.id.progressBarR)
     }
     override fun onClick(v: View) {
         when (v.id){ //when is the kotlin switch statement. use the following syntax
@@ -50,51 +48,51 @@ class RegisterUser : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    fun registerUser() {
-        var email: String = editTextEmail.text.toString().trim()
-        var firstName: String = editTextFirst.text.toString().trim()
-        var lastName: String = editTextLast.text.toString().trim()
-        var password: String = editTextPassword.text.toString().trim()
+    private fun registerUser() {
+        val email: String = editTextEmail.text.toString().trim()
+        val firstName: String = editTextFirst.text.toString().trim()
+        val lastName: String = editTextLast.text.toString().trim()
+        val password: String = editTextPassword.text.toString().trim()
 
         if(firstName.isEmpty()){
-            editTextFirst.setError("First name is required!")
+            editTextFirst.error = "First name is required!"
             editTextFirst.requestFocus()
             return
 
         }
 
         if(lastName.isEmpty()){
-            editTextLast.setError("Last name is required!")
+            editTextLast.error = "Last name is required!"
             editTextLast.requestFocus()
             return
 
         }
         if(email.isEmpty()){
-            editTextEmail.setError("Email is required!")
+            editTextEmail.error = "Email is required!"
             editTextEmail.requestFocus()
             return
 
         }
 
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            editTextEmail.setError("Please provide a valid email!")
+            editTextEmail.error = "Please provide a valid email!"
             editTextEmail.requestFocus()
             return
         }
         if(password.isEmpty()){
-            editTextPassword.setError("Password is required!")
+            editTextPassword.error = "Password is required!"
             editTextPassword.requestFocus()
             return
 
         }
 
         if(password.length < 6){
-            editTextPassword.setError("Please enter a longer password!")
+            editTextPassword.error = "Please enter a longer password!"
             editTextPassword.requestFocus()
             return
         }
 
-        progressBar.setVisibility(View.VISIBLE)
+        progressBar.visibility = View.VISIBLE
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task->
                 if (task.isSuccessful){
@@ -106,19 +104,19 @@ class RegisterUser : AppCompatActivity(), View.OnClickListener {
                         database.child(userID).setValue(userData).addOnSuccessListener {
 
                             Toast.makeText(this, "User has been saved successfully!", Toast.LENGTH_LONG).show()
-                            progressBar.setVisibility(View.GONE)
+                            progressBar.visibility = View.GONE
 
                             // redirect to Login Layout here
 
                         }.addOnFailureListener{
                             Toast.makeText(this@RegisterUser, "Failed to register!", Toast.LENGTH_LONG).show()
-                            progressBar.setVisibility(View.GONE)
+                            progressBar.visibility = View.GONE
                         }
                     }
 
                 }else{
                     Toast.makeText(this@RegisterUser, "This email was used!", Toast.LENGTH_LONG).show()
-                    progressBar.setVisibility(View.GONE)
+                    progressBar.visibility = View.GONE
                 }
 
             }

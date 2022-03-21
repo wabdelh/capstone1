@@ -1,26 +1,23 @@
 package com.example.capstone
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Patterns
 import android.view.View
 import android.widget.*
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-    lateinit var progressBar: ProgressBar
-    lateinit var loginUser: Button
-    lateinit var editEmail: EditText
-    lateinit var editPassword: EditText
+    private lateinit var progressBar: ProgressBar
+    private lateinit var loginUser: Button
+    private lateinit var editEmail: EditText
+    private lateinit var editPassword: EditText
 
-    lateinit var auth: FirebaseAuth
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -36,12 +33,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
         // login button to verify user input to the database
-        loginUser = findViewById<Button>(R.id.login)
+        loginUser = findViewById(R.id.login)
         loginUser.setOnClickListener(this)
 
-        editEmail = findViewById<EditText>(R.id.emailL)
-        editPassword = findViewById<EditText>(R.id.passwordL)
-        progressBar = findViewById<ProgressBar>(R.id.progressBar)
+        editEmail = findViewById(R.id.emailL)
+        editPassword = findViewById(R.id.passwordL)
+        progressBar = findViewById(R.id.progressBar)
 
     }
 
@@ -52,7 +49,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 //with the name of the page to move to, RegisterUser is the activity to move to
                 startActivity(Intent(this, RegisterUser::class.java))
             }
-
             R.id.login -> { //when v.id == R.id.register, the id of register object
                 //startActivity changes active activity, taking an Intent object made
                 //with the name of the page to move to, RegisterUser is the activity to move to
@@ -61,30 +57,29 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    fun loginUser() {
+    private fun loginUser() {
 
         // var for username and pw
-        var email: String = editEmail.text.toString().trim()
-        var password: String = editPassword.text.toString().trim()
+        val email: String = editEmail.text.toString().trim()
+        val password: String = editPassword.text.toString().trim()
 
         if (email.isEmpty()) {
-            editEmail.setError("Email is required!")
+            editEmail.error = "Email is required!"
             editEmail.requestFocus()
             return
         }
 
         if (password.isEmpty()) {
-            editPassword.setError("Password is required!")
+            editPassword.error = "Password is required!"
             editPassword.requestFocus()
             return
         }
 
-        progressBar.setVisibility(View.VISIBLE)
+        progressBar.visibility = View.VISIBLE
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    val user = auth.currentUser
                     startActivity(Intent(this, AfterLoginHome::class.java))
                 } else {
                     // If sign in fails, display a message to the user.
@@ -93,7 +88,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         Toast.LENGTH_SHORT
 
                     ).show()
-                    progressBar.setVisibility(View.GONE)
+                    progressBar.visibility = View.GONE
                 }
             }
     }
