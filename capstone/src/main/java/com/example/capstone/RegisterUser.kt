@@ -1,5 +1,6 @@
 package com.example.capstone
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
@@ -53,44 +54,45 @@ class RegisterUser : AppCompatActivity(), View.OnClickListener {
         val firstName: String = editTextFirst.text.toString().trim()
         val lastName: String = editTextLast.text.toString().trim()
         val password: String = editTextPassword.text.toString().trim()
-
+        var inputInvalid = false
         if(firstName.isEmpty()){
             editTextFirst.error = "First name is required!"
             editTextFirst.requestFocus()
-            return
-
+            inputInvalid = true
         }
 
         if(lastName.isEmpty()){
             editTextLast.error = "Last name is required!"
             editTextLast.requestFocus()
-            return
+            inputInvalid = true
 
         }
         if(email.isEmpty()){
             editTextEmail.error = "Email is required!"
             editTextEmail.requestFocus()
-            return
+            inputInvalid = true
 
         }
 
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             editTextEmail.error = "Please provide a valid email!"
             editTextEmail.requestFocus()
-            return
+            inputInvalid = true
         }
         if(password.isEmpty()){
             editTextPassword.error = "Password is required!"
             editTextPassword.requestFocus()
-            return
+            inputInvalid = true
 
         }
 
         if(password.length < 6){
             editTextPassword.error = "Please enter a longer password!"
             editTextPassword.requestFocus()
-            return
+            inputInvalid = true
         }
+        if(inputInvalid)
+            return
 
         progressBar.visibility = View.VISIBLE
         auth.createUserWithEmailAndPassword(email, password)
@@ -106,7 +108,7 @@ class RegisterUser : AppCompatActivity(), View.OnClickListener {
                             Toast.makeText(this, "User has been saved successfully!", Toast.LENGTH_LONG).show()
                             progressBar.visibility = View.GONE
 
-                            // redirect to Login Layout here
+                            startActivity(Intent(this, MainActivity::class.java))
 
                         }.addOnFailureListener{
                             Toast.makeText(this@RegisterUser, "Failed to register!", Toast.LENGTH_LONG).show()

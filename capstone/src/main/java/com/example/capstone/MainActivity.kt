@@ -62,18 +62,21 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         // var for username and pw
         val email: String = editEmail.text.toString().trim()
         val password: String = editPassword.text.toString().trim()
+        var inputInvalid = false
 
         if (email.isEmpty()) {
             editEmail.error = "Email is required!"
             editEmail.requestFocus()
-            return
+            inputInvalid = true
         }
 
         if (password.isEmpty()) {
             editPassword.error = "Password is required!"
             editPassword.requestFocus()
-            return
+            inputInvalid = true
         }
+        if(inputInvalid)
+            return
 
         progressBar.visibility = View.VISIBLE
         auth.signInWithEmailAndPassword(email, password)
