@@ -65,13 +65,12 @@ class RegisterUser : AppCompatActivity(), View.OnClickListener {
             editTextLast.error = "Last name is required!"
             editTextLast.requestFocus()
             inputInvalid = true
-
         }
+
         if(email.isEmpty()){
             editTextEmail.error = "Email is required!"
             editTextEmail.requestFocus()
             inputInvalid = true
-
         }
 
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
@@ -83,7 +82,6 @@ class RegisterUser : AppCompatActivity(), View.OnClickListener {
             editTextPassword.error = "Password is required!"
             editTextPassword.requestFocus()
             inputInvalid = true
-
         }
 
         if(password.length < 6){
@@ -95,35 +93,29 @@ class RegisterUser : AppCompatActivity(), View.OnClickListener {
             return
 
         progressBar.visibility = View.VISIBLE
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener { task->
-                if (task.isSuccessful){
-                    val userData = User(firstName, lastName, email)
-                    val database = FirebaseDatabase.getInstance().getReference("Users")
-                    val userID = database.push().key
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task->
+            if (task.isSuccessful){
+                val userData = User(firstName, lastName, email)
+                val database = FirebaseDatabase.getInstance().getReference("Users")
+                val userID = database.push().key
 
-                    if (userID != null) {
-                        database.child(userID).setValue(userData).addOnSuccessListener {
+                if (userID != null) {
+                    database.child(userID).setValue(userData).addOnSuccessListener {
 
-                            Toast.makeText(this, "User has been saved successfully!", Toast.LENGTH_LONG).show()
-                            progressBar.visibility = View.GONE
+                        Toast.makeText(this, "User has been saved successfully!", Toast.LENGTH_LONG).show()
+                        progressBar.visibility = View.GONE
 
-                            startActivity(Intent(this, MainActivity::class.java))
+                        startActivity(Intent(this, MainActivity::class.java))
 
-                        }.addOnFailureListener{
-                            Toast.makeText(this@RegisterUser, "Failed to register!", Toast.LENGTH_LONG).show()
-                            progressBar.visibility = View.GONE
-                        }
+                    }.addOnFailureListener{
+                        Toast.makeText(this@RegisterUser, "Failed to register!", Toast.LENGTH_LONG).show()
+                        progressBar.visibility = View.GONE
                     }
-
-                }else{
-                    Toast.makeText(this@RegisterUser, "This email was used!", Toast.LENGTH_LONG).show()
-                    progressBar.visibility = View.GONE
                 }
-
+            }else{
+                Toast.makeText(this@RegisterUser, "This email was used!", Toast.LENGTH_LONG).show()
+                progressBar.visibility = View.GONE
             }
-
-
-
+        }
     }
 }

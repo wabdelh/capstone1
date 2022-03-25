@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         auth = Firebase.auth
         // [END initialize_auth]
 
-
         // login button to verify user input to the database
         loginUser = findViewById(R.id.login)
         loginUser.setOnClickListener(this)
@@ -40,7 +39,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         editEmail = findViewById(R.id.emailL)
         editPassword = findViewById(R.id.passwordL)
         progressBar = findViewById(R.id.progressBar)
-
     }
 
     override fun onClick(v: View) {
@@ -64,7 +62,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun loginUser() {
-
         // var for username and pw
         val email: String = editEmail.text.toString().trim()
         val password: String = editPassword.text.toString().trim()
@@ -85,22 +82,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             return
 
         progressBar.visibility = View.VISIBLE
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    startActivity(Intent(this, AfterLoginHome::class.java))
-                    progressBar.visibility = View.GONE
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Toast.makeText(
-                        baseContext, "Login failed, please confirm credentials.",
-                        Toast.LENGTH_SHORT
-
-                    ).show()
-                    progressBar.visibility = View.GONE
-                }
+        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
+            if (task.isSuccessful) {
+                // Sign in success, update UI with the signed-in user's information
+                startActivity(Intent(this, AfterLoginHome::class.java))
+                progressBar.visibility = View.GONE
+            } else {
+                // If sign in fails, display a message to the user.
+                Toast.makeText(baseContext, "Login failed, please confirm credentials.", Toast.LENGTH_SHORT).show()
+                progressBar.visibility = View.GONE
             }
+        }
     }
 }
 

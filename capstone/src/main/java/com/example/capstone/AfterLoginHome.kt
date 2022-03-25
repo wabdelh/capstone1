@@ -66,15 +66,14 @@ class AfterLoginHome : AppCompatActivity(), View.OnClickListener {
         prog.visibility = View.VISIBLE
         user!!.updateEmail(email)
 
-        database.orderByChild("email").equalTo(user.email as String)
-        .addValueEventListener(object : ValueEventListener {
+        database.orderByChild("email").equalTo(user.email as String).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(d: DataSnapshot) {
                 for (snapshot in d.children) {
                     key = snapshot.key as String //gets key of data
                     u = snapshot.getValue(User::class.java)!! //this puts the value with a given email into the User class
                 }
                 u.email = email //change the email
-                database.child(key).setValue(u).addOnSuccessListener { //why does it only work with this? I dunno
+                database.child(key).setValue(u).addOnSuccessListener { //this is run after the key
                     Toast.makeText(this@AfterLoginHome, "Name has been successfully changed", Toast.LENGTH_LONG).show()
                     emailObj.setText("")
                     prog.visibility = View.GONE
@@ -114,22 +113,19 @@ class AfterLoginHome : AppCompatActivity(), View.OnClickListener {
         val email : String = user?.email as String
         var key = ""
         val database = FirebaseDatabase.getInstance().getReference("Users")
-        database.orderByChild("email").equalTo(email).addValueEventListener(object : ValueEventListener {
+        database.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(d : DataSnapshot) {
                 for (snapshot in d.children) {
                     key = snapshot.key as String
                 }
-                database.child(key).setValue(userData).addOnSuccessListener { //why does it only work with this? I dunno
+                database.child(key).setValue(userData).addOnSuccessListener { //why does this have to be in the onDataChange? It does
                     Toast.makeText(this@AfterLoginHome, "Name has been successfully changed", Toast.LENGTH_LONG).show()
                     fNameObj.setText("")
                     lNameObj.setText("")
                     prog.visibility = View.GONE
                 }
-
             }
-
-            override fun onCancelled(error: DatabaseError) {
-            }
+            override fun onCancelled(error: DatabaseError) {}
         })
     }
 }
