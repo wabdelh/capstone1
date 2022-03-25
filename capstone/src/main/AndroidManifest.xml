@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Capstone1">
         <activity
+            android:name=".ForgotPassword"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -23,8 +27,8 @@
             android:exported="false" />
         <activity
             android:name=".RegisterUser"
-            android:parentActivityName=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

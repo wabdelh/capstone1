@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/layout/activity_after_login_home.xml" value="0.27717391304347827" />
+        <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/layout/activity_forgot_password.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/layout/activity_main.xml" value="0.27717391304347827" />
+        <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/layout/activity_register_user.xml" value="0.18034447821681865" />
+        <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/layout/forgot_password.xml" value="0.25" />
         <entry key="..\:/Users/lyonc/AndroidStudioProjects/capstone1/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/lyonc/AndroidStudioProjects/capstone1/app/src/main/res/layout/activity_register_user.xml" value="0.358695652173913" />
         <entry key="..\:/Users/lyonc/StudioProjects/capstone1/capstone/src/main/res/layout/activity_after_login_home.xml" value="0.22" />
