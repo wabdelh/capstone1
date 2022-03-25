@@ -25,7 +25,6 @@ class AfterLoginHome : AppCompatActivity(), View.OnClickListener {
         findViewById<Button>(R.id.logout).setOnClickListener(this)
 
         findViewById<Button>(R.id.confirmEmailChange).setOnClickListener(this)
-        findViewById<Button>(R.id.confirmPasswordChange).setOnClickListener(this)
         findViewById<Button>(R.id.confirmNameChange).setOnClickListener(this)
     }
 
@@ -37,9 +36,6 @@ class AfterLoginHome : AppCompatActivity(), View.OnClickListener {
             }
             R.id.confirmEmailChange -> {
                 changeEmail()
-            }
-            R.id.confirmPasswordChange -> {
-                changePassword()
             }
             R.id.confirmNameChange -> {
                 changeName()
@@ -86,36 +82,6 @@ class AfterLoginHome : AppCompatActivity(), View.OnClickListener {
             }
             override fun onCancelled(error: DatabaseError) {} //required
         })
-    }
-
-
-
-    private fun changePassword() {
-        val passObj = findViewById<EditText>(R.id.passwordChange)
-        val pass: String = passObj.text.toString().trim()
-        val prog = findViewById<ProgressBar>(R.id.mainProgBar)
-
-        if (pass.isEmpty()) {
-            passObj.error = "No password provided"
-            passObj.requestFocus()
-            return
-        }
-        if(pass.length < 6) {
-            passObj.error = "Password must be six characters or longer"
-            passObj.requestFocus()
-            return
-        }
-
-        val user = Firebase.auth.currentUser
-        prog.visibility = View.VISIBLE
-        user!!.updatePassword(pass)
-        .addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                prog.visibility = View.GONE
-                Toast.makeText(this, "Password has been successfully changed", Toast.LENGTH_LONG).show()
-                passObj.setText("")
-            }
-        }
     }
 
     private fun changeName(){
