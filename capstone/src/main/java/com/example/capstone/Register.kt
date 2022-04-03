@@ -11,7 +11,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 
-class RegisterUser : AppCompatActivity(), View.OnClickListener {
+class Register : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var registerUser: TextView
     private lateinit var progressBar: ProgressBar
@@ -24,7 +24,10 @@ class RegisterUser : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register_user)
+        setContentView(R.layout.activity_register)
+
+        setSupportActionBar(findViewById(R.id.toolbar_reg))
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         // Initialize Firebase Auth
         auth = Firebase.auth
@@ -105,15 +108,15 @@ class RegisterUser : AppCompatActivity(), View.OnClickListener {
                         Toast.makeText(this, "User has been saved successfully!", Toast.LENGTH_LONG).show()
                         progressBar.visibility = View.GONE
 
-                        startActivity(Intent(this, MainActivity::class.java))
+                        startActivity(Intent(this, Login::class.java))
 
                     }.addOnFailureListener{
-                        Toast.makeText(this@RegisterUser, "Failed to register!", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@Register, "Failed to register!", Toast.LENGTH_LONG).show()
                         progressBar.visibility = View.GONE
                     }
                 }
             }else{
-                Toast.makeText(this@RegisterUser, "This email was used!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Register, "This email was used!", Toast.LENGTH_LONG).show()
                 progressBar.visibility = View.GONE
             }
         }

@@ -11,6 +11,9 @@ class ForgotPassword : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgot_password)
 
+        setSupportActionBar(findViewById(R.id.toolbar_forgot))
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         findViewById<TextView>(R.id.submitButton).setOnClickListener(this)
     }
 
