@@ -24,18 +24,26 @@ class AfterLoginHome : AppCompatActivity(), View.OnClickListener {
     val options = arrayOf("baby1", "baby2", "baby3", "baby4")
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         // array adapter needed for options
-        val arrayAdapter = ArrayAdapter(this@AfterLoginHome,android.R.layout.simple_spinner_dropdown_item,options)
-    spinner.adapter = arrayAdapter
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        val arrayAdapter = ArrayAdapter(
+            this@AfterLoginHome,
+            android.R.layout.simple_spinner_dropdown_item,
+            options
+        )
+        spinner.adapter = arrayAdapter
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 p0: AdapterView<*>?,
                 p1: View?,
                 p2: Int,
-                p3: Long) {
-        Toast.makeText(this@AfterLoginHome,"You Selected "+options[p2],Toast.LENGTH_LONG).show()
+                p3: Long
+            ) {
+                Toast.makeText(
+                    this@AfterLoginHome,
+                    "You Selected " + options[p2],
+                    Toast.LENGTH_LONG
+                ).show()
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -55,7 +63,7 @@ class AfterLoginHome : AppCompatActivity(), View.OnClickListener {
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater : MenuInflater = menuInflater
+        val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.settings, menu)
 
         return true
