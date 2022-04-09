@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/addBabyI"
+    <item android:id="@+id/invite"
         android:icon="@drawable/ic_add"
-        android:title="Add Baby"
+        android:title="Invite"
         app:showAsAction="ifRoom" />
-    <item android:id="@+id/manageUser"
-        android:icon="@drawable/ic_settings"
-        android:title="Settings"
-        app:showAsAction="ifRoom" />
-
 </menu>
