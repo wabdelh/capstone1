@@ -25,6 +25,8 @@ class AfterLoginHome : AppCompatActivity(), View.OnClickListener {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_after_login_home)
         // array adapter needed for options
         val arrayAdapter = ArrayAdapter(
             this@AfterLoginHome,
@@ -51,10 +53,6 @@ class AfterLoginHome : AppCompatActivity(), View.OnClickListener {
             }
 
         }
-
-
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_after_login_home)
 
         setSupportActionBar(findViewById(R.id.toolbar_main))
 
