@@ -4,46 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddBaby">
+    tools:context=".FoodLog">
 
-    <include
-        android:id="@+id/toolbar_add_baby"
-        layout="@layout/toolbar" />
     <ProgressBar
-        android:id="@+id/progressBarB"
+        android:id="@+id/foodLogProgBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <Button
-        android:id="@+id/inviteB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Baby"
+    <ScrollView
+        android:id="@+id/scrollViewP"
+        android:layout_width="378dp"
+        android:layout_height="541dp"
+        android:fadeScrollbars="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.609" />
+        app:layout_constraintVertical_bias="0.893">
 
-    <EditText
-        android:id="@+id/babyName"
+        <LinearLayout
+            android:id="@+id/linFL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <include
+        android:id="@+id/toolbar_food_log"
+        layout="@layout/toolbar" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Name"
-        android:minHeight="48dp"
+        android:text="Food Log"
+        android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.519" />
+        app:layout_constraintVertical_bias="0.134" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

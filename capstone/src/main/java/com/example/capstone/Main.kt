@@ -6,14 +6,30 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
+import android.widget.Button
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 
-class Main : AppCompatActivity() {
+import com.example.capstone.MyApplication.Companion.babyKey
+import com.google.firebase.auth.ktx.auth
+
+class Main : AppCompatActivity(), View.OnClickListener  {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+        getName()
+
         setSupportActionBar(findViewById(R.id.toolbar_main))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        findViewById<Button>(R.id.toFoodLog).setOnClickListener(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -31,6 +47,27 @@ class Main : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun getName() {
+        FirebaseDatabase.getInstance().getReference("Babies").child(babyKey).addListenerForSingleValueEvent(object :
+            ValueEventListener {
+            override fun onDataChange(d: DataSnapshot) {
+                val baby = d.getValue(Baby::class.java) //store baby data in Baby object
+                if (baby != null) {
+                    supportActionBar?.title = baby.name
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {}
+        })
+    }
+
+    override fun onClick(v: View) {
+        when (v.id) {
+            R.id.toFoodLog -> {
+                startActivity(Intent(this, FoodLog::class.java))
+            }
+        }
     }
 }
 

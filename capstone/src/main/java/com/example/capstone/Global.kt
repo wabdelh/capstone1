@@ -6,3 +6,7 @@ class MyApplication: Application() {
         var babyKey : String = ""
     }
 }
+
+//to import global data use:
+//import com.example.capstone.MyApplication.Companion.babyKey
+//or right click on babyKey and click import.

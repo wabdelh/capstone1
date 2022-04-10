@@ -46,7 +46,7 @@ class ManageUser : AppCompatActivity(), View.OnClickListener {
     private fun changeEmail() {
         val emailObj: EditText = findViewById(R.id.emailChange)
         val email: String = emailObj.text.toString().trim()
-        val prog: ProgressBar = findViewById(R.id.mainProgBar)
+        val prog: ProgressBar = findViewById(R.id.babyListProgBar)
         var key = ""
         val database = FirebaseDatabase.getInstance().getReference("Users")
         var u = User()
@@ -89,7 +89,7 @@ class ManageUser : AppCompatActivity(), View.OnClickListener {
         val fName: String = fNameObj.text.toString().trim()
         val lNameObj : EditText = findViewById(R.id.lastNameChange)
         val lName: String = lNameObj.text.toString().trim()
-        val prog : ProgressBar = findViewById(R.id.mainProgBar)
+        val prog : ProgressBar = findViewById(R.id.babyListProgBar)
         var inputInvalid = false
 
         if (fName.isEmpty()) {

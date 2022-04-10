@@ -13,9 +13,17 @@
         android:theme="@style/Theme.Capstone1"
         tools:ignore="Instantiatable">
         <activity
+            android:name=".AddFoodLog"
+            android:exported="false"
+            android:parentActivityName=".FoodLog"/>
+        <activity
+            android:name=".FoodLog"
+            android:exported="false"
+            android:parentActivityName=".Main" />
+        <activity
             android:name=".Invite"
             android:exported="false"
-            android:parentActivityName=".Main"/>
+            android:parentActivityName=".Main" />
         <activity
             android:name=".AddBaby"
             android:exported="false"
