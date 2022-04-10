@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/WIN10USER/Desktop/Capstone/Git/capstone1/capstone/src/main/res/layout/activity_add_baby.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/WIN10USER/Desktop/Capstone/Git/capstone1/capstone/src/main/res/layout/activity_add_food_log.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/WIN10USER/Desktop/Capstone/Git/capstone1/capstone/src/main/res/layout/activity_after_login_home.xml" value="0.1539855072463768" />
         <entry key="..\:/Users/WIN10USER/Desktop/Capstone/Git/capstone1/capstone/src/main/res/layout/activity_invite.xml" value="0.2" />
+        <entry key="..\:/Users/WIN10USER/Desktop/Capstone/Git/capstone1/capstone/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/lyonc/AndroidStudioProjects/capstone1/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/lyonc/AndroidStudioProjects/capstone1/app/src/main/res/layout/activity_register_user.xml" value="0.358695652173913" />
         <entry key="..\:/Users/lyonc/StudioProjects/capstone1/capstone/src/main/res/layout/activity_after_login_home.xml" value="0.22" />
