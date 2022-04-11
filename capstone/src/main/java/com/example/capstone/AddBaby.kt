@@ -9,11 +9,12 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
+import java.sql.Date
 
 class AddBaby : AppCompatActivity(), View.OnClickListener {
     private lateinit var babyName: EditText
     private lateinit var progressBar: ProgressBar
-
+    private lateinit var date: DatePicker
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +28,7 @@ class AddBaby : AppCompatActivity(), View.OnClickListener {
 
         babyName = findViewById(R.id.babyName)
         progressBar = findViewById(R.id.progressBarB)
+        date = findViewById(R.id.datePicker)
 
         findViewById<Button>(R.id.inviteB).setOnClickListener(this)
     }
@@ -41,6 +43,12 @@ class AddBaby : AppCompatActivity(), View.OnClickListener {
 
     private fun addBaby() {
         val name: String = babyName.text.toString().trim()
+
+        val day = date.dayOfMonth
+        val month = date.month
+        val year = date.year - 1900
+        val bDate = Date(year, month, day)
+        val freakingTme = bDate.time
 
         var inputInvalid = false
         if(name.isEmpty()){
@@ -58,7 +66,7 @@ class AddBaby : AppCompatActivity(), View.OnClickListener {
         val secList : MutableList<String> = mutableListOf()
         val terList : MutableList<String> = mutableListOf()
 
-        val babyData = Baby(name, fList, priList, secList, terList)
+        val babyData = Baby(name, freakingTme, fList, priList, secList, terList)
         val database = FirebaseDatabase.getInstance().getReference("Babies")
         val babyID = database.push().key
 

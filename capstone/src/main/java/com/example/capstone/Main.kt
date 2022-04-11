@@ -8,21 +8,20 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.ktx.Firebase
 
 import com.example.capstone.MyApplication.Companion.babyKey
-import com.google.firebase.auth.ktx.auth
+import java.sql.Date
 
 class Main : AppCompatActivity(), View.OnClickListener  {
-
+    lateinit var birth: Date
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
 
         getName()
 
