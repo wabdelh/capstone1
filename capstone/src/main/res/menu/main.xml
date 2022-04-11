@@ -5,4 +5,9 @@
         android:icon="@drawable/ic_add"
         android:title="Invite"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/manageBaby"
+        android:icon="@drawable/ic_settings"
+        android:title="Settings"
+        app:showAsAction="ifRoom" />
 </menu>

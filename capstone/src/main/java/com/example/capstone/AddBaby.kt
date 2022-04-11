@@ -48,7 +48,7 @@ class AddBaby : AppCompatActivity(), View.OnClickListener {
         val month = date.month
         val year = date.year - 1900
         val bDate = Date(year, month, day)
-        val freakingTme = bDate.time
+        val timeVal = bDate.time
 
         var inputInvalid = false
         if(name.isEmpty()){
@@ -66,7 +66,7 @@ class AddBaby : AppCompatActivity(), View.OnClickListener {
         val secList : MutableList<String> = mutableListOf()
         val terList : MutableList<String> = mutableListOf()
 
-        val babyData = Baby(name, freakingTme, fList, priList, secList, terList)
+        val babyData = Baby(name, timeVal, fList, priList, secList, terList)
         val database = FirebaseDatabase.getInstance().getReference("Babies")
         val babyID = database.push().key
 

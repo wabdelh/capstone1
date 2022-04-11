@@ -13,9 +13,14 @@
         android:theme="@style/Theme.Capstone1"
         tools:ignore="Instantiatable">
         <activity
+            android:name=".ManageBaby"
+            android:exported="false"
+            android:label="@string/title_activity_manage_baby"
+            android:parentActivityName=".Main"/>
+        <activity
             android:name=".AddFoodLog"
             android:exported="false"
-            android:parentActivityName=".FoodLog"/>
+            android:parentActivityName=".FoodLog" />
         <activity
             android:name=".FoodLog"
             android:exported="false"

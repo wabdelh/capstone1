@@ -44,6 +44,10 @@ class Main : AppCompatActivity(), View.OnClickListener  {
                 startActivity(Intent(this, Invite::class.java))
                 return true
             }
+            R.id.manageBaby -> {
+                startActivity(Intent(this, ManageBaby::class.java))
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
     }
