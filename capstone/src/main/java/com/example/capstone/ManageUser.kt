@@ -62,22 +62,35 @@ class ManageUser : AppCompatActivity(), View.OnClickListener {
             emailObj.requestFocus()
             return
         }
-        val user = Firebase.auth.currentUser
-        prog.visibility = View.VISIBLE
-        user!!.updateEmail(email)
 
-        database.orderByChild("email").equalTo(user.email as String).addListenerForSingleValueEvent(object :
-            ValueEventListener {
-            override fun onDataChange(d: DataSnapshot) {
-                for (snapshot in d.children) {
-                    key = snapshot.key as String //gets key of data
-                    u = snapshot.getValue(User::class.java)!! //this puts the value with a given email into the User class
-                }
-                u.email = email //change the email
-                database.child(key).setValue(u).addOnSuccessListener { //this is run after the key
-                    Toast.makeText(this@ManageUser, "Name has been successfully changed", Toast.LENGTH_LONG).show()
-                    emailObj.setText("")
-                    prog.visibility = View.GONE
+        database.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(object :
+            ValueEventListener { // Query the database using entered email
+            override fun onDataChange(snapshot: DataSnapshot){
+                if (snapshot.exists()){ // Entered email exists in the database
+                    emailObj.error = "This email was used"
+                    emailObj.requestFocus()
+                    return
+                } else{
+                    val user = Firebase.auth.currentUser
+                    prog.visibility = View.VISIBLE
+                    user!!.updateEmail(email)
+
+                    database.orderByChild("email").equalTo(user.email as String).addListenerForSingleValueEvent(object :
+                        ValueEventListener {
+                        override fun onDataChange(d: DataSnapshot) {
+                            for (snapshot in d.children) {
+                                key = snapshot.key as String //gets key of data
+                                u = snapshot.getValue(User::class.java)!! //this puts the value with a given email into the User class
+                            }
+                            u.email = email //change the email
+                            database.child(key).setValue(u).addOnSuccessListener { //this is run after the key
+                                Toast.makeText(this@ManageUser, "Email has been successfully changed", Toast.LENGTH_LONG).show()
+                                emailObj.setText("")
+                                prog.visibility = View.GONE
+                            }
+                        }
+                        override fun onCancelled(error: DatabaseError) {} //required
+                    })
                 }
             }
             override fun onCancelled(error: DatabaseError) {} //required
