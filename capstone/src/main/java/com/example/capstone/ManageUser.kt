@@ -1,5 +1,7 @@
 package com.example.capstone
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,6 +11,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -26,6 +29,7 @@ class ManageUser : AppCompatActivity(), View.OnClickListener {
 
         findViewById<Button>(R.id.confirmEmailChange).setOnClickListener(this)
         findViewById<Button>(R.id.confirmNameChange).setOnClickListener(this)
+        findViewById<Button>(R.id.deleteUser).setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
@@ -39,6 +43,9 @@ class ManageUser : AppCompatActivity(), View.OnClickListener {
             }
             R.id.confirmNameChange -> {
                 changeName()
+            }
+            R.id.deleteUser -> {
+                deleteUser()
             }
         }
     }
@@ -142,5 +149,59 @@ class ManageUser : AppCompatActivity(), View.OnClickListener {
             }
             override fun onCancelled(error: DatabaseError) {}
         })
+    }
+
+    private fun deleteUser(){
+
+        // User Deletion requires that the user has recently signed in,
+        // so re-authentication is required.
+        val database = FirebaseDatabase.getInstance().getReference("Users")
+        var key = ""
+        val user = Firebase.auth.currentUser!!
+        val builder = AlertDialog.Builder(this) // build a prompt for password confirmation
+        val inflater = layoutInflater
+        builder.setTitle("Confirm Your Password")
+        val dialogLayout = inflater.inflate(R.layout.user_delete_promt, null)
+        val editTextObj : EditText = dialogLayout.findViewById(R.id.confirmPassword)
+        val userEmailString : String = user.email.toString().trim() // get current user's email for later use
+
+        builder.setView(dialogLayout)
+
+        builder.setPositiveButton("OK", DialogInterface.OnClickListener { builder, which ->
+            val credential = EmailAuthProvider
+                .getCredential(userEmailString, editTextObj.text.toString())
+            user.reauthenticate(credential) // user need to be re-authenticated before deletion
+                .addOnCompleteListener(this){task ->
+                    if (task.isSuccessful) {
+                        user.delete() // delete in Authentication
+                            .addOnCompleteListener { task ->
+                                if (task.isSuccessful) {
+                                    // query for current user's email
+                                    database.orderByChild("email").equalTo(user.email as String).addListenerForSingleValueEvent(object :
+                                        ValueEventListener {
+                                        override fun onDataChange(d: DataSnapshot) {
+                                            for (snapshot in d.children) {
+                                                key = snapshot.key as String // gets key of data
+                                            }
+                                            database.child(key).removeValue().addOnSuccessListener { // delete in Realtime Database
+                                                Toast.makeText(this@ManageUser, "Email has been successfully changed", Toast.LENGTH_LONG).show()
+                                            }
+                                        }
+                                        override fun onCancelled(error: DatabaseError) {} //required
+                                    })
+                                    Toast.makeText(baseContext, "User Deleted Successfully!", Toast.LENGTH_SHORT).show()
+                                    startActivity(Intent(this, Login::class.java))
+                                }
+                            }
+
+                    } else{
+                        Toast.makeText(baseContext, "Re-auth failed, please confirm credentials.", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+        })
+        builder.setNegativeButton("Cancel", DialogInterface.OnClickListener { builder, which -> builder.cancel() })
+        builder.show()
+
     }
 }
