@@ -26,13 +26,13 @@ Windows:
 Will add all the steps to ensure setup, clone repo.. ect...
 
 ```sh
-Step 1:
-Step 2:
-Step 3:
-Step 4:
-Step 5:
-Step 6:
-Step 7:
+Step 1: Download Android Studio
+Step 2: Download the github Repo
+Step 3: Build the project, by clicking the build icon
+Step 4: Click the run icon
+Step 5: Wait for the emmulator to launch
+Step 6: Create a user account
+Step 7: Login and use the application
 ```
 
 ##  Video Example
@@ -41,12 +41,19 @@ Will add when demo is complete
 
 
 
-## Functional Requirements (Update every sprint)
+## Functional Requirements (Updated every sprint)
 
 * Priority 1
     * Create Account
     * Manage Account
     * Login
+
+* Priority 2
+    * Adding and managing the baby
+    * Invite Users
+    * User Deletion/ Database information deletion
+    * Reset Password
+
 
 
 ## Non-Functional Requirements (Update every sprint)
@@ -59,8 +66,8 @@ Will add when demo is complete
 
 ## Additional Resources
 
-1. Some Link
-2. Some Link
-3. Some Link
-4. Some Link
-5. Some Link
+1. https://kotlinlang.org/docs/home.html
+2. https://firebase.google.com/docs/guides
+3. https://developer.android.com/kotlin
+4. Additonal Links
+5. Additonal Link
