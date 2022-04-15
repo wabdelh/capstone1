@@ -11,7 +11,7 @@
 
     <include
         android:id="@+id/toolbar_home"
-        layout="@layout/toolbar" />
+        layout="@layout/toolbar"/>
 
     <Button
         android:id="@+id/logout"

@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/invite"
-        android:icon="@drawable/ic_add"
-        android:title="Invite"
-        app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/manageBaby"
-        android:icon="@drawable/ic_settings"
-        android:title="Settings"
-        app:showAsAction="ifRoom" />
+        android:id="@+id/more"
+        android:icon="@drawable/ic_options"
+        android:title=""
+        app:showAsAction="always">
+           <menu>
+            <item android:id="@+id/invite"
+                android:icon="@drawable/ic_add"
+                android:title="Invite"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/manageBaby"
+                android:icon="@drawable/ic_settings"
+                android:title="Settings"
+                app:showAsAction="ifRoom" />
+           </menu>
+    </item>
 </menu>

@@ -184,7 +184,7 @@ class ManageUser : AppCompatActivity(), View.OnClickListener {
                                                 key = snapshot.key as String // gets key of data
                                             }
                                             database.child(key).removeValue().addOnSuccessListener { // delete in Realtime Database
-                                                Toast.makeText(this@ManageUser, "Email has been successfully changed", Toast.LENGTH_LONG).show()
+                                                Toast.makeText(this@ManageUser, "User has successfully been deleted", Toast.LENGTH_LONG).show()
                                             }
                                         }
                                         override fun onCancelled(error: DatabaseError) {} //required
