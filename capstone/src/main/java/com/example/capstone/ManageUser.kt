@@ -152,10 +152,10 @@ class ManageUser : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun deleteUser(){
-
         // User Deletion requires that the user has recently signed in,
         // so re-authentication is required.
-        val database = FirebaseDatabase.getInstance().getReference("Users")
+        val uDatabase = FirebaseDatabase.getInstance().getReference("Users")
+        val bDatabase = FirebaseDatabase.getInstance().getReference("Babies")
         var key = ""
         val user = Firebase.auth.currentUser!!
         val builder = AlertDialog.Builder(this) // build a prompt for password confirmation
@@ -177,13 +177,14 @@ class ManageUser : AppCompatActivity(), View.OnClickListener {
                             .addOnCompleteListener { task ->
                                 if (task.isSuccessful) {
                                     // query for current user's email
-                                    database.orderByChild("email").equalTo(user.email as String).addListenerForSingleValueEvent(object :
+                                    // in the future, look for babies with email
+                                    uDatabase.orderByChild("email").equalTo(user.email as String).addListenerForSingleValueEvent(object :
                                         ValueEventListener {
                                         override fun onDataChange(d: DataSnapshot) {
                                             for (snapshot in d.children) {
                                                 key = snapshot.key as String // gets key of data
                                             }
-                                            database.child(key).removeValue().addOnSuccessListener { // delete in Realtime Database
+                                            uDatabase.child(key).removeValue().addOnSuccessListener { // delete in Realtime Database
                                                 Toast.makeText(this@ManageUser, "User has successfully been deleted", Toast.LENGTH_LONG).show()
                                             }
                                         }

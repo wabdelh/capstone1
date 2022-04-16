@@ -107,35 +107,24 @@ class ManageBaby : AppCompatActivity(), View.OnClickListener {
             val credential = EmailAuthProvider
                 .getCredential(userEmailString, editTextObj.text.toString())
             user.reauthenticate(credential) // user need to be re-authenticated before deletion
-                .addOnCompleteListener(this){task ->
-                                if (task.isSuccessful) {
-                                    // query for current user's email
-                                    database.orderByChild("email").equalTo(user.email as String).addListenerForSingleValueEvent(object :
-                                        ValueEventListener {
-                                        override fun onDataChange(d: DataSnapshot) {
-                                            for (snapshot in d.children) {
-                                                key = snapshot.key as String // gets key of data
-                                            }
-                                            database.removeValue().addOnSuccessListener { // delete in Realtime Database
-                                                Toast.makeText(this@ManageBaby, "Baby has been successfully deleted.", Toast.LENGTH_LONG).show()
-                                            }
-                                        }
-                                        override fun onCancelled(error: DatabaseError) {} //required
-                                    })
-                                    Toast.makeText(baseContext, "Baby has been successfully deleted.", Toast.LENGTH_SHORT).show()
-                                    startActivity(Intent(this, Login::class.java))
-                                }
-                                else{
-                                    Toast.makeText(baseContext, "Re-auth failed, please confirm credentials.", Toast.LENGTH_SHORT).show()
-                                }
-
-
+                .addOnCompleteListener(this){ reAuth ->
+                    if (reAuth.isSuccessful) {
+                        database.removeValue().addOnCompleteListener() { remove ->
+                            if(remove.isSuccessful) {
+                                Toast.makeText(baseContext, "Baby has been successfully deleted.", Toast.LENGTH_SHORT).show()
+                                startActivity(Intent(this, AfterLoginHome::class.java))
+                            }
+                            else {
+                                Toast.makeText(baseContext, "Deletion failed.", Toast.LENGTH_SHORT).show()
+                            }
+                        }
                     }
-
-
+                    else{
+                        Toast.makeText(baseContext, "Re-auth failed, please confirm credentials.", Toast.LENGTH_SHORT).show()
+                    }
+                }
         })
         builder.setNegativeButton("Cancel", DialogInterface.OnClickListener { builder, which -> builder.cancel() })
         builder.show()
-
     }
 }
