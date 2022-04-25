@@ -78,7 +78,7 @@ class SleepLog : AppCompatActivity() {
                     val start = sdf.format(i.start)
                     val end = sdf.format(i.end)
 
-                    newText.text =  "Start at " + start + "end at " + end +" . Comment: " + i.comment
+                    newText.text =  "Start at " + start + " End at " + end +" . Comment: " + i.comment
                     linearLayout.addView(newText)
                 }
                 progressBar.visibility = View.GONE
