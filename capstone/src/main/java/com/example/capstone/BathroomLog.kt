@@ -2,8 +2,6 @@ package com.example.capstone
 
 import android.content.Intent
 import android.icu.text.SimpleDateFormat
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -18,19 +16,21 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 
-class FoodLog : AppCompatActivity() {
+class BathroomLog : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_food_log)
+        setContentView(R.layout.activity_bathroom_log)
 
-        progressBar = findViewById(R.id.foodLogProgBar)
+        progressBar = findViewById(R.id.bathroomLogProgBar)
 
-        loadFoodLog()
+        loadBathroomLog()
 
-        setSupportActionBar(findViewById(R.id.toolbar_food_log))
+        setSupportActionBar(findViewById(R.id.toolbar_bathroom_log))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
@@ -58,26 +58,26 @@ class FoodLog : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.addLog -> {
-                startActivity(Intent(this, AddFoodLog::class.java))
+                startActivity(Intent(this, AddBathroomLog::class.java))
                 return true
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun loadFoodLog() {
+    private fun loadBathroomLog() {
         progressBar.visibility = View.VISIBLE
         FirebaseDatabase.getInstance().getReference("Babies").child(babyKey).addListenerForSingleValueEvent(object :
             ValueEventListener {
             override fun onDataChange(d: DataSnapshot) {
                 val baby = d.getValue(Baby::class.java)
                 val linearLayout : LinearLayout = findViewById(R.id.linFL)
-                for(i in baby?.foodLog!!) { //look for current email in baby
-                    val newText = TextView(this@FoodLog)
+                for(i in baby?.bathroomLog!!) { //look for current email in baby
+                    val newText = TextView(this@BathroomLog)
                     val sdf = SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
                     val dateString = sdf.format(i.time)
 
-                    newText.text = i.quantity.toString() + " grams of " + i.kind + ": " + dateString + ". Comment: " + i.comment
+                    newText.text = i.kind + ": " + dateString + ". Comment: " + i.comment
                     linearLayout.addView(newText)
                 }
                 progressBar.visibility = View.GONE
@@ -85,4 +85,6 @@ class FoodLog : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {}
         })
     }
+
+
 }

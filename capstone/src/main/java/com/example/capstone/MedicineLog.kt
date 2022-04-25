@@ -19,18 +19,18 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-class FoodLog : AppCompatActivity() {
+class MedicineLog : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_food_log)
+        setContentView(R.layout.activity_medicine_log)
 
-        progressBar = findViewById(R.id.foodLogProgBar)
+        progressBar = findViewById(R.id.medLogProgBar)
 
-        loadFoodLog()
+        loadMedLog()
 
-        setSupportActionBar(findViewById(R.id.toolbar_food_log))
+        setSupportActionBar(findViewById(R.id.toolbar_med_log))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
@@ -58,22 +58,22 @@ class FoodLog : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.addLog -> {
-                startActivity(Intent(this, AddFoodLog::class.java))
+                startActivity(Intent(this, AddMedLog::class.java))
                 return true
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun loadFoodLog() {
+    private fun loadMedLog() {
         progressBar.visibility = View.VISIBLE
         FirebaseDatabase.getInstance().getReference("Babies").child(babyKey).addListenerForSingleValueEvent(object :
             ValueEventListener {
             override fun onDataChange(d: DataSnapshot) {
                 val baby = d.getValue(Baby::class.java)
                 val linearLayout : LinearLayout = findViewById(R.id.linFL)
-                for(i in baby?.foodLog!!) { //look for current email in baby
-                    val newText = TextView(this@FoodLog)
+                for(i in baby?.medLog!!) { //look for current email in baby
+                    val newText = TextView(this@MedicineLog)
                     val sdf = SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
                     val dateString = sdf.format(i.time)
 

@@ -30,6 +30,10 @@ class Main : AppCompatActivity(), View.OnClickListener  {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         findViewById<Button>(R.id.toFoodLog).setOnClickListener(this)
+        findViewById<Button>(R.id.toSleepLog).setOnClickListener(this)
+        findViewById<Button>(R.id.toWashLog).setOnClickListener(this)
+        findViewById<Button>(R.id.toMedLog).setOnClickListener(this)
+        findViewById<Button>(R.id.toBathroomLog).setOnClickListener(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -87,6 +91,22 @@ class Main : AppCompatActivity(), View.OnClickListener  {
         when (v.id) {
             R.id.toFoodLog -> {
                 startActivity(Intent(this, FoodLog::class.java))
+            }
+
+            R.id.toMedLog -> {
+                startActivity(Intent(this, MedicineLog::class.java))
+            }
+
+            R.id.toWashLog -> {
+                startActivity(Intent(this, WashLog::class.java))
+            }
+
+            R.id.toSleepLog -> {
+                startActivity(Intent(this, SleepLog::class.java))
+            }
+
+            R.id.toBathroomLog -> {
+                startActivity(Intent(this, BathroomLog::class.java))
             }
         }
     }

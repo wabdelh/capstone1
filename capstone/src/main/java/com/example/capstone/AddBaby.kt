@@ -62,11 +62,16 @@ class AddBaby : AppCompatActivity(), View.OnClickListener {
 
         progressBar.visibility = View.VISIBLE
         val fList : MutableList<FoodLogObj> = mutableListOf()
+        val wList : MutableList<WashLogObj> = mutableListOf()
+        val sList : MutableList<SleepLogObj> = mutableListOf()
+        val mList : MutableList<MedLogObj> = mutableListOf()
+        val bList : MutableList<BathroomLogObj> = mutableListOf()
+
         val priList : MutableList<String> = mutableListOf(auth.currentUser?.email.toString())
         val secList : MutableList<String> = mutableListOf()
         val terList : MutableList<String> = mutableListOf()
 
-        val babyData = Baby(name, timeVal, fList, priList, secList, terList)
+        val babyData = Baby(name, timeVal, fList, wList, bList, sList, mList, priList, secList, terList)
         val database = FirebaseDatabase.getInstance().getReference("Babies")
         val babyID = database.push().key
 

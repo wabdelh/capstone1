@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/toAddFoodLog"
+    <item android:id="@+id/addLog"
         android:icon="@drawable/ic_add"
-        android:title="Invite"
+        android:title="Add Log"
         app:showAsAction="ifRoom" />
 </menu>

@@ -19,18 +19,18 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-class FoodLog : AppCompatActivity() {
+class SleepLog : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_food_log)
+        setContentView(R.layout.activity_sleep_log)
 
-        progressBar = findViewById(R.id.foodLogProgBar)
+        progressBar = findViewById(R.id.sleepLogProgBar)
 
-        loadFoodLog()
+        loadSleepLog()
 
-        setSupportActionBar(findViewById(R.id.toolbar_food_log))
+        setSupportActionBar(findViewById(R.id.toolbar_sleep_log))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
@@ -58,26 +58,27 @@ class FoodLog : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.addLog -> {
-                startActivity(Intent(this, AddFoodLog::class.java))
+                startActivity(Intent(this, AddSleepLog::class.java))
                 return true
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun loadFoodLog() {
+    private fun loadSleepLog() {
         progressBar.visibility = View.VISIBLE
         FirebaseDatabase.getInstance().getReference("Babies").child(babyKey).addListenerForSingleValueEvent(object :
             ValueEventListener {
             override fun onDataChange(d: DataSnapshot) {
                 val baby = d.getValue(Baby::class.java)
                 val linearLayout : LinearLayout = findViewById(R.id.linFL)
-                for(i in baby?.foodLog!!) { //look for current email in baby
-                    val newText = TextView(this@FoodLog)
+                for(i in baby?.sleepLog!!) { //look for current email in baby
+                    val newText = TextView(this@SleepLog)
                     val sdf = SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
-                    val dateString = sdf.format(i.time)
+                    val start = sdf.format(i.start)
+                    val end = sdf.format(i.end)
 
-                    newText.text = i.quantity.toString() + " grams of " + i.kind + ": " + dateString + ". Comment: " + i.comment
+                    newText.text =  "Start at " + start + "end at " + end +" . Comment: " + i.comment
                     linearLayout.addView(newText)
                 }
                 progressBar.visibility = View.GONE
