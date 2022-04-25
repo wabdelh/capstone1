@@ -14,7 +14,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Invite Addtional Caretaker"
+        android:text="Invite Additional Caretaker"
         android:textColor="#040303"
         android:textSize="26sp"
         android:textStyle="bold"

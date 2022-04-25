@@ -11,7 +11,9 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import com.example.capstone.MyApplication.Companion.babyKey
+import com.example.capstone.MyApplication.Companion.role
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -35,6 +37,20 @@ class FoodLog : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater : MenuInflater = menuInflater
         inflater.inflate(R.menu.food_log, menu)
+
+        when (role) {
+            "pri" -> {
+            }
+            "sec" -> {
+            }
+            "ter" -> {
+                menu?.findItem(R.id.toAddFoodLog)?.isVisible = false
+            }
+            else -> {
+                Toast.makeText(this, "ERROR: Invalid role.", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, Login::class.java))
+            }
+        }
 
         return true
     }
@@ -61,7 +77,7 @@ class FoodLog : AppCompatActivity() {
                     val sdf = SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
                     val dateString = sdf.format(i.time)
 
-                    newText.text = i.quantity.toString() + " grams of " + i.kind + ": " + dateString
+                    newText.text = i.quantity.toString() + " grams of " + i.kind + ": " + dateString + ". Comment: " + i.comment
                     linearLayout.addView(newText)
                 }
                 progressBar.visibility = View.GONE

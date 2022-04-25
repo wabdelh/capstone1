@@ -16,6 +16,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 import com.example.capstone.MyApplication.Companion.babyKey
+import com.example.capstone.MyApplication.Companion.role
 
 
 class AfterLoginHome : AppCompatActivity(), View.OnClickListener {
@@ -78,6 +79,7 @@ class AfterLoginHome : AppCompatActivity(), View.OnClickListener {
                                 newText.text = baby.name
                                 newText.setOnClickListener {
                                     babyKey = snapshot.key.toString()
+                                    role = "pri"
                                     startActivity(Intent(this@AfterLoginHome, Main::class.java))
                                 }
 
@@ -93,6 +95,7 @@ class AfterLoginHome : AppCompatActivity(), View.OnClickListener {
                                 newText.text = baby.name
                                 newText.setOnClickListener {
                                     babyKey = snapshot.key.toString()
+                                    role = "sec"
                                     startActivity(Intent(this@AfterLoginHome, Main::class.java))
                                 }
 
@@ -108,6 +111,7 @@ class AfterLoginHome : AppCompatActivity(), View.OnClickListener {
                                 newText.text = baby.name
                                 newText.setOnClickListener {
                                     babyKey = snapshot.key.toString()
+                                    role = "ter"
                                     startActivity(Intent(this@AfterLoginHome, Main::class.java))
                                 }
 

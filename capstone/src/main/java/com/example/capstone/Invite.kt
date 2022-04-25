@@ -47,48 +47,36 @@ class Invite : AppCompatActivity(), View.OnClickListener {
                 p3: Long
             ) {
 
-                Toast.makeText(this@Invite, "You have selected " + roles[p2], Toast.LENGTH_LONG)
-                    .show()
+                //Toast.makeText(this@Invite, "You have selected " + roles[p2], Toast.LENGTH_LONG)
+                //    .show()
                 num = p2
             }
-
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-                TODO("Not yet implemented")
-            }
-
+            override fun onNothingSelected(p0: AdapterView<*>?) {}
         }
         setSupportActionBar(findViewById(R.id.toolbar_invite))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        Toast.makeText(this@Invite, babyKey, Toast.LENGTH_SHORT).show()
-
+        //Toast.makeText(this@Invite, babyKey, Toast.LENGTH_SHORT).show()
     }
 
     override fun onClick(v: View) {
         when (v.id) {
             R.id.Invite -> {
-
                 // add user as primary caretaker
                 if (num == 0) {
                     validEmail()
                     addPrimaryBabyEmail()
-
                 }
                 // add user as secondary caretaker
                 if (num == 1) {
                     validEmail()
                     addSecondaryBabyEmail()
-
-
                 }
                 // add user as tertiary caretaker
                 if (num == 2) {
                     validEmail()
                     addTertiaryBabyEmail()
-
                 }
-
-
             }
         }
     }

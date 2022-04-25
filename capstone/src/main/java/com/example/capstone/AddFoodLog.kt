@@ -1,5 +1,6 @@
 package com.example.capstone
 
+import android.content.Intent
 import android.icu.util.Calendar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,6 +19,7 @@ class AddFoodLog : AppCompatActivity(), View.OnClickListener {
     private lateinit var time: TimePicker
     private lateinit var kind: TextView
     private lateinit var quantity: TextView
+    private lateinit var comment: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,11 +28,13 @@ class AddFoodLog : AppCompatActivity(), View.OnClickListener {
         setSupportActionBar(findViewById(R.id.toolbar_add_food_log))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        findViewById<TimePicker>(R.id.timePicker).setIs24HourView(true)
 
         kind = findViewById(R.id.kind)
         quantity = findViewById(R.id.quantity)
         date = findViewById(R.id.datePicker)
         time = findViewById(R.id.timePicker)
+        comment = findViewById(R.id.foodComment)
 
         findViewById<Button>(R.id.addFoodLog).setOnClickListener(this)
     }
@@ -40,7 +44,7 @@ class AddFoodLog : AppCompatActivity(), View.OnClickListener {
         val quantityS: String = quantity.text.toString().trim()
         var quantityF = 0.0F
         val time: Long = getTime()
-
+        val commentS: String = comment.text.toString().trim()
         var inputInvalid = false
 
         try {
@@ -65,7 +69,7 @@ class AddFoodLog : AppCompatActivity(), View.OnClickListener {
         if(inputInvalid)
             return
 
-        val foodData = FoodLogObj(foodKind, quantityF, time)
+        val foodData = FoodLogObj(foodKind, quantityF, time, commentS)
 
         FirebaseDatabase.getInstance().getReference("Babies").child(babyKey).addListenerForSingleValueEvent(object :
             ValueEventListener {
@@ -75,8 +79,10 @@ class AddFoodLog : AppCompatActivity(), View.OnClickListener {
                 baby?.foodLog?.add(foodData)
                 FirebaseDatabase.getInstance().getReference("Babies").child(babyKey).setValue(baby).addOnSuccessListener {
                     Toast.makeText(this@AddFoodLog, "Food log has been added successfully!", Toast.LENGTH_LONG).show()
+                    startActivity(Intent(this@AddFoodLog, FoodLog::class.java))
                 }.addOnFailureListener{
                     Toast.makeText(this@AddFoodLog, "Failed to add food log!", Toast.LENGTH_LONG).show()
+                    startActivity(Intent(this@AddFoodLog, FoodLog::class.java))
                 }
             }
             override fun onCancelled(error: DatabaseError) {}
