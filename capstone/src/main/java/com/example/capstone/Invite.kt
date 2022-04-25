@@ -4,6 +4,7 @@ package com.example.capstone
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Patterns
 import android.view.View
 import android.widget.*
 import com.example.capstone.MyApplication.Companion.babyKey
@@ -62,115 +63,51 @@ class Invite : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View) {
         when (v.id) {
             R.id.Invite -> {
-                // add user as primary caretaker
-                if (num == 0) {
-                    validEmail()
-                    addPrimaryBabyEmail()
-                }
-                // add user as secondary caretaker
-                if (num == 1) {
-                    validEmail()
-                    addSecondaryBabyEmail()
-                }
-                // add user as tertiary caretaker
-                if (num == 2) {
-                    validEmail()
-                    addTertiaryBabyEmail()
-                }
+                if(validEmail())
+                    addBabyEmail(num)
             }
         }
     }
 
-    private fun validEmail() {
+    private fun validEmail(): Boolean {
         val email: String = iemail.text.toString().trim()
-        var inputInvalid = false
 
         if (email.isEmpty()) {
             iemail.error = "Email is required!"
             iemail.requestFocus()
-            inputInvalid = true
+            return false;
         }
-
-        if (inputInvalid)
-            return
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            iemail.error = "Please provide a valid email!"
+            iemail.requestFocus()
+            return false;
+        }
+        return true
     }
 
-    private fun addPrimaryBabyEmail() {
+    private fun addBabyEmail(mode : Int) {
         val email: String = iemail.text.toString().trim()
         FirebaseDatabase.getInstance().getReference("Babies").child(babyKey)
             .addListenerForSingleValueEvent(object :
                 ValueEventListener {
                 override fun onDataChange(d: DataSnapshot) {
                     val baby = d.getValue(Baby::class.java)
-
-                    baby?.Primary?.add(email)
+                    when(mode) { //add email to baby list depending on num, which selects user type
+                        0 -> baby?.Primary?.add(email) //if primary selected, add email to primary list
+                        1 -> baby?.Secondary?.add(email) //if secondary selected, add email to secondary list
+                        2 -> baby?.Tertiary?.add(email) //if tertiary selected, add email to secondary list
+                    }
                     FirebaseDatabase.getInstance().getReference("Babies").child(babyKey)
                         .setValue(baby).addOnSuccessListener {
-                            Toast.makeText(
-                                this@Invite,
-                                "Primary Email has been added successfully!",
-                                Toast.LENGTH_LONG
-                            ).show()
-                            setContentView(R.layout.activity_after_login_home)
+                            Toast.makeText(this@Invite, "Primary Email has been added successfully!", Toast.LENGTH_LONG).show()
+                            startActivity(Intent(this@Invite, Main::class.java))
                         }.addOnFailureListener {
                             Toast.makeText(this@Invite, "Failed to add Email", Toast.LENGTH_LONG).show()
+                            startActivity(Intent(this@Invite, Main::class.java))
                         }
                 }
 
                 override fun onCancelled(error: DatabaseError) {}
             })
     }
-
-    private fun addSecondaryBabyEmail() {
-        val email: String = iemail.text.toString().trim()
-        FirebaseDatabase.getInstance().getReference("Babies").child(babyKey)
-            .addListenerForSingleValueEvent(object :
-                ValueEventListener {
-                override fun onDataChange(d: DataSnapshot) {
-                    val baby = d.getValue(Baby::class.java)
-
-                    baby?.Secondary?.add(email)
-                    FirebaseDatabase.getInstance().getReference("Babies").child(babyKey)
-                        .setValue(baby).addOnSuccessListener {
-                            Toast.makeText(
-                                this@Invite,
-                                "Secondary Email has been added successfully!",
-                                Toast.LENGTH_LONG
-                            ).show()
-                        }.addOnFailureListener {
-                            Toast.makeText(this@Invite, "Failed to add Email", Toast.LENGTH_LONG).show()
-                        }
-                }
-
-                override fun onCancelled(error: DatabaseError) {}
-            })
-    }
-
-    private fun addTertiaryBabyEmail() {
-        val email: String = iemail.text.toString().trim()
-        FirebaseDatabase.getInstance().getReference("Babies").child(babyKey)
-            .addListenerForSingleValueEvent(object :
-                ValueEventListener {
-                override fun onDataChange(d: DataSnapshot) {
-                    val baby = d.getValue(Baby::class.java)
-
-                    baby?.Tertiary?.add(email)
-                    FirebaseDatabase.getInstance().getReference("Babies").child(babyKey)
-                        .setValue(baby).addOnSuccessListener {
-                            Toast.makeText(
-                                this@Invite,
-                                "Tertiary Email has been added successfully!",
-                                Toast.LENGTH_LONG
-                            ).show()
-
-
-                        }.addOnFailureListener {
-                            Toast.makeText(this@Invite, "Failed to add Email", Toast.LENGTH_LONG).show()
-                        }
-                }
-
-                override fun onCancelled(error: DatabaseError) {}
-            })
-    }
-
 }
