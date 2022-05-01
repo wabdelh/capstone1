@@ -77,12 +77,17 @@ class AfterLoginHome : AppCompatActivity(), View.OnClickListener {
 
                                 val newText = TextView(this@AfterLoginHome)
                                 newText.text = baby.name
+                                newText.minHeight = 50
+                                newText.gravity = Gravity.CENTER
+                                newText.setPadding(0,30,0,0)
+                                newText.setBackgroundResource(R.drawable.border)
+                                newText.height = 100
+
                                 newText.setOnClickListener {
                                     babyKey = snapshot.key.toString()
                                     role = "pri"
                                     startActivity(Intent(this@AfterLoginHome, Main::class.java))
                                 }
-
                                 linearLayout.addView(newText)
                                 continue
                             }
@@ -93,6 +98,12 @@ class AfterLoginHome : AppCompatActivity(), View.OnClickListener {
 
                                 val newText = TextView(this@AfterLoginHome)
                                 newText.text = baby.name
+                                newText.minHeight = 50
+                                newText.gravity = Gravity.CENTER
+                                newText.setPadding(0,30,0,0)
+                                newText.setBackgroundResource(R.drawable.border)
+                                newText.height = 100
+
                                 newText.setOnClickListener {
                                     babyKey = snapshot.key.toString()
                                     role = "sec"
@@ -109,6 +120,12 @@ class AfterLoginHome : AppCompatActivity(), View.OnClickListener {
 
                                 val newText = TextView(this@AfterLoginHome)
                                 newText.text = baby.name
+                                newText.minHeight = 50
+                                newText.gravity = Gravity.CENTER
+                                newText.setPadding(0,30,0,0)
+                                newText.setBackgroundResource(R.drawable.border)
+                                newText.height = 100
+
                                 newText.setOnClickListener {
                                     babyKey = snapshot.key.toString()
                                     role = "ter"
@@ -126,4 +143,6 @@ class AfterLoginHome : AppCompatActivity(), View.OnClickListener {
             override fun onCancelled(error: DatabaseError) {}
         })
     }
+
+
 }
