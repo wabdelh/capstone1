@@ -12,7 +12,8 @@
     <include
         android:id="@+id/toolbar_home"
         layout="@layout/toolbar"
-        />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <Button
         android:id="@+id/logout"
