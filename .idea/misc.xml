@@ -5,29 +5,16 @@
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.3309492847854356" />
         <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/layout/activity_add_baby.xml" value="0.5" />
-        <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/layout/activity_add_bathroom_log.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/layout/activity_add_food_log.xml" value="0.28351449275362317" />
-        <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/layout/activity_add_med_log.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/layout/activity_add_sleep_log.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/layout/activity_add_wash_log.xml" value="0.2604166666666667" />
         <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/layout/activity_after_login_home.xml" value="0.27717391304347827" />
-        <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/layout/activity_bathroom_log.xml" value="0.2604166666666667" />
         <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/layout/activity_food_log.xml" value="0.276268115942029" />
         <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/layout/activity_forgot_password.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/layout/activity_invite.xml" value="0.276268115942029" />
         <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/layout/activity_login.xml" value="0.276268115942029" />
-        <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/layout/activity_medicine_log.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/layout/activity_main.xml" value="0.27717391304347827" />
         <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/layout/activity_register_user.xml" value="0.18034447821681865" />
-        <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/layout/activity_sleep_log.xml" value="0.24635416666666668" />
-        <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/layout/activity_wash_log.xml" value="0.24635416666666668" />
         <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/layout/forgot_password.xml" value="0.25" />
-        <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/layout/fragment_first.xml" value="0.2604166666666667" />
-        <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/layout/fragment_second.xml" value="0.2604166666666667" />
         <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/layout/toolbar.xml" value="0.2758152173913043" />
-        <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/menu/food_log.xml" value="0.2604166666666667" />
-        <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/menu/log.xml" value="0.18802083333333333" />
-        <entry key="..\:/Users/Nathan/Documents/GitHub/capstone1/capstone/src/main/res/menu/main.xml" value="0.2564102564102564" />
         <entry key="..\:/Users/lyonc/AndroidStudioProjects/capstone1/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/lyonc/AndroidStudioProjects/capstone1/app/src/main/res/layout/activity_register_user.xml" value="0.358695652173913" />
         <entry key="..\:/Users/lyonc/StudioProjects/capstone1/capstone/src/main/res/drawable/border.xml" value="0.337" />
@@ -36,7 +23,7 @@
         <entry key="..\:/Users/lyonc/StudioProjects/capstone1/capstone/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.1935" />
         <entry key="..\:/Users/lyonc/StudioProjects/capstone1/capstone/src/main/res/drawable/ic_settings.xml" value="0.1935" />
         <entry key="..\:/Users/lyonc/StudioProjects/capstone1/capstone/src/main/res/layout/activity_add_baby.xml" value="0.22327898550724637" />
-        <entry key="..\:/Users/lyonc/StudioProjects/capstone1/capstone/src/main/res/layout/activity_add_food_log.xml" value="0.5" />
+        <entry key="..\:/Users/lyonc/StudioProjects/capstone1/capstone/src/main/res/layout/activity_add_food_log.xml" value="0.2734375" />
         <entry key="..\:/Users/lyonc/StudioProjects/capstone1/capstone/src/main/res/layout/activity_after_login_home.xml" value="0.25" />
         <entry key="..\:/Users/lyonc/StudioProjects/capstone1/capstone/src/main/res/layout/activity_food_log.xml" value="0.33" />
         <entry key="..\:/Users/lyonc/StudioProjects/capstone1/capstone/src/main/res/layout/activity_forgot_password.xml" value="0.3625" />
@@ -62,6 +49,8 @@
         <entry key="..\:/Users/lyonc/StudioProjects/capstone2/application2/src/main/res/layout/activity_register_user.xml" value="0.358695652173913" />
         <entry key="..\:/Users/lyonc/StudioProjects/capstone2/capstone/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/lyonc/StudioProjects/capstone2/capstone/src/main/res/layout/activity_register_user.xml" value="0.1" />
+        <entry key="capstone/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.214" />
+        <entry key="capstone/src/main/res/drawable/border.xml" value="0.214" />
         <entry key="capstone/src/main/res/drawable/ic_add.xml" value="0.3035" />
         <entry key="capstone/src/main/res/drawable/ic_launcher_background.xml" value="0.372" />
         <entry key="capstone/src/main/res/drawable/ic_settings.xml" value="0.125" />
