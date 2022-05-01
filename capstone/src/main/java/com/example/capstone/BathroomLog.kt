@@ -77,7 +77,10 @@ class BathroomLog : AppCompatActivity() {
                     val sdf = SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
                     val dateString = sdf.format(i.time)
 
-                    newText.text = i.kind + ": " + dateString + ". Comment: " + i.comment
+                    newText.text = "Description: " + i.kind + "\nTime: " + dateString + "\nComment: " + i.comment
+                    newText.setPadding(0,50,0,0)
+                    newText.setBackgroundResource(R.drawable.border)
+                    newText.minHeight = 300
                     linearLayout.addView(newText)
                 }
                 progressBar.visibility = View.GONE

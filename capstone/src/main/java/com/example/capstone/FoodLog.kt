@@ -4,10 +4,7 @@ import android.content.Intent
 import android.icu.text.SimpleDateFormat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
+import android.view.*
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -77,7 +74,10 @@ class FoodLog : AppCompatActivity() {
                     val sdf = SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
                     val dateString = sdf.format(i.time)
 
-                    newText.text = i.quantity.toString() + " grams of " + i.kind + ": " + dateString + ". Comment: " + i.comment
+                    newText.text = "Description: " + i.quantity.toString() + " grams of " + i.kind + "\nTime: " + dateString + "\nComment: " + i.comment
+                    newText.setPadding(100,50,20,50)
+                    newText.setBackgroundResource(R.drawable.border)
+                    newText.minHeight = 300
                     linearLayout.addView(newText)
                 }
                 progressBar.visibility = View.GONE

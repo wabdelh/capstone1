@@ -61,7 +61,7 @@
         android:id="@+id/scrollViewP"
         android:layout_width="368dp"
         android:layout_height="101dp"
-        android:fadeScrollbars="false"
+        android:fadeScrollbars="true"
         android:background="@drawable/border"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
