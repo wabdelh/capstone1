@@ -56,7 +56,11 @@
         <entry key="capstone/src/main/res/drawable/ic_settings.xml" value="0.125" />
         <entry key="capstone/src/main/res/drawable/log_border.xml" value="0.1045" />
         <entry key="capstone/src/main/res/layout/activity_add_baby.xml" value="0.3770833333333333" />
+        <entry key="capstone/src/main/res/layout/activity_add_bathroom_log.xml" value="0.2105978260869565" />
         <entry key="capstone/src/main/res/layout/activity_add_food_log.xml" value="0.3095339888841385" />
+        <entry key="capstone/src/main/res/layout/activity_add_med_log.xml" value="0.25" />
+        <entry key="capstone/src/main/res/layout/activity_add_sleep_log.xml" value="0.33" />
+        <entry key="capstone/src/main/res/layout/activity_add_wash_log.xml" value="0.33" />
         <entry key="capstone/src/main/res/layout/activity_after_login_home.xml" value="0.25" />
         <entry key="capstone/src/main/res/layout/activity_food_log.xml" value="0.1" />
         <entry key="capstone/src/main/res/layout/activity_forgot_password.xml" value="0.3770833333333333" />
@@ -68,6 +72,7 @@
         <entry key="capstone/src/main/res/layout/activity_register.xml" value="0.3095339888841385" />
         <entry key="capstone/src/main/res/layout/activity_register_user.xml" value="0.21822916666666667" />
         <entry key="capstone/src/main/res/layout/activity_sleep_log.xml" value="0.12182971014492754" />
+        <entry key="capstone/src/main/res/layout/activity_wash_log.xml" value="0.20652173913043478" />
         <entry key="capstone/src/main/res/layout/card_layout.xml" value="0.3095339888841385" />
         <entry key="capstone/src/main/res/layout/fragment_first.xml" value="0.3095339888841385" />
         <entry key="capstone/src/main/res/layout/fragment_second.xml" value="0.3095339888841385" />
