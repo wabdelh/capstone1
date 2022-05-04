@@ -7,10 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.Toast
+import android.widget.*
+import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -30,6 +28,21 @@ class ManageUser : AppCompatActivity(), View.OnClickListener {
         findViewById<Button>(R.id.confirmEmailChange).setOnClickListener(this)
         findViewById<Button>(R.id.confirmNameChange).setOnClickListener(this)
         findViewById<Button>(R.id.deleteUser).setOnClickListener(this)
+
+        // Declare the switch from the layout file
+        val btn = findViewById<Switch>(R.id.switch1)
+
+        // set the switch to listen on checked change
+        btn.setOnCheckedChangeListener { _, isChecked ->
+
+            if (btn.isChecked) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                btn.text = "Disable dark mode"
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                btn.text = "Enable dark mode"
+            }
+        }
     }
 
     override fun onClick(v: View) {
@@ -48,6 +61,7 @@ class ManageUser : AppCompatActivity(), View.OnClickListener {
                 deleteUser()
             }
         }
+
     }
 
     private fun changeEmail() {
