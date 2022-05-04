@@ -1,5 +1,6 @@
 package com.example.capstone
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
@@ -30,6 +31,7 @@ class ManageUser : AppCompatActivity(), View.OnClickListener {
         findViewById<Button>(R.id.confirmEmailChange).setOnClickListener(this)
         findViewById<Button>(R.id.confirmNameChange).setOnClickListener(this)
         findViewById<Button>(R.id.deleteUser).setOnClickListener(this)
+        findViewById<Button>(R.id.themeSettings).setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
@@ -46,6 +48,9 @@ class ManageUser : AppCompatActivity(), View.OnClickListener {
             }
             R.id.deleteUser -> {
                 deleteUser()
+            }
+            R.id.themeSettings -> {
+                startActivity(Intent(this, darkMode::class.java))
             }
         }
     }
