@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Capstone1"
         tools:ignore="Instantiatable">
         <activity
+            android:name=".darkMode"
+            android:exported="false" />
+        <activity
             android:name=".AddMedLog"
             android:exported="false"
             android:label="Add Medicine Data"
