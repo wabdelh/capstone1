@@ -152,12 +152,24 @@
         android:id="@+id/deleteUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Delete User"
         android:backgroundTint="?attr/colorError"
+        android:text="Delete User"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.737" />
+        app:layout_constraintVertical_bias="0.867" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Toggle Dark Mode"
+        android:textSize="17dp"
+        app:layout_constraintBottom_toTopOf="@+id/deleteUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confirmNameChange"
+        app:layout_constraintVertical_bias="0.597" />
 </androidx.constraintlayout.widget.ConstraintLayout>
