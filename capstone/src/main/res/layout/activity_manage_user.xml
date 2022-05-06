@@ -164,7 +164,7 @@
         android:id="@+id/switch1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Toggle Dark Mode"
+        android:text="Enable Dark Mode"
         android:textSize="17dp"
         app:layout_constraintBottom_toTopOf="@+id/deleteUser"
         app:layout_constraintEnd_toEndOf="parent"

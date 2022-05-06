@@ -1,6 +1,7 @@
 package com.example.capstone
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -32,17 +33,30 @@ class ManageUser : AppCompatActivity(), View.OnClickListener {
         // Declare the switch from the layout file
         val btn = findViewById<Switch>(R.id.switch1)
 
+        // Save dark mode preference for when revisiting the app
+        val sharedPref = getSharedPreferences("saveToggle", Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+
         // set the switch to listen on checked change
         btn.setOnCheckedChangeListener { _, isChecked ->
 
             if (btn.isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 btn.text = "Disable dark mode"
+                editor.apply {
+                    putBoolean("toggle", btn.isChecked)
+                    apply()
+                }
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                btn.text = "Enable dark mode"
+                editor.apply {
+                    putBoolean("toggle", false)
+                    apply()
+                }
             }
         }
+        val toggle = sharedPref.getBoolean("toggle", false)
+        btn.isChecked = toggle
     }
 
     override fun onClick(v: View) {
