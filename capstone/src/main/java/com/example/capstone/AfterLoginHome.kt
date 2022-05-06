@@ -1,7 +1,9 @@
 package com.example.capstone
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import android.os.Bundle
 import android.view.*
 import android.widget.Button
@@ -17,6 +19,7 @@ import com.google.firebase.database.ValueEventListener
 
 import com.example.capstone.MyApplication.Companion.babyKey
 import com.example.capstone.MyApplication.Companion.role
+import java.lang.Boolean.getBoolean
 
 
 class AfterLoginHome : AppCompatActivity(), View.OnClickListener {
@@ -32,6 +35,12 @@ class AfterLoginHome : AppCompatActivity(), View.OnClickListener {
         findViewById<Button>(R.id.logout).setOnClickListener(this)
 
         loadBabies()
+        //load Dark Mode preferences
+        val sharedPref = getSharedPreferences("saveToggle", Context.MODE_PRIVATE)
+        val toggle = sharedPref.getBoolean("toggle", false)
+        if(toggle) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
