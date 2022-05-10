@@ -69,6 +69,8 @@
         <entry key="capstone/src/main/res/drawable/ic_settings.xml" value="0.125" />
         <entry key="capstone/src/main/res/layout/activity_add_baby.xml" value="0.3770833333333333" />
         <entry key="capstone/src/main/res/layout/activity_add_food_log.xml" value="0.3095339888841385" />
+        <entry key="capstone/src/main/res/layout/activity_add_med_log.xml" value="0.2105978260869565" />
+        <entry key="capstone/src/main/res/layout/activity_add_sleep_log.xml" value="0.20018115942028986" />
         <entry key="capstone/src/main/res/layout/activity_after_login_home.xml" value="0.25" />
         <entry key="capstone/src/main/res/layout/activity_food_log.xml" value="0.33" />
         <entry key="capstone/src/main/res/layout/activity_forgot_password.xml" value="0.3770833333333333" />
